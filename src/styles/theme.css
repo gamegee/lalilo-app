@@ -1,0 +1,39 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #bfe1fc;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-container {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.eye-container__outer-area {
+  opacity: 1;
+}
+
+.eye-container__inner-area {
+  top: 40%;
+  width: 30%;
+  height: 35%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
