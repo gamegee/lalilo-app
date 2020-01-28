@@ -45,20 +45,24 @@ const App = (): JSX.Element => {
 
   const playAudio = (): void => {
     const audio = new Audio(clicFile);
-    audio.play();
+    audio.oncanplaythrough = function() {
+      audio.play();
+    };
   };
 
   const pupilAnim = (): void => {
-    playAudio();
-    anime
-      .timeline({
-        easing: "easeOutCirc",
-        begin: anim => setAnimState(anim),
-        complete: () => setAnimState(null)
-      })
-      .add(pupilAwayAnim())
-      .add(eyeLashesAnim())
-      .add(pupilAnimReset());
+    if (!animState) {
+      playAudio();
+      anime
+        .timeline({
+          easing: "easeOutCirc",
+          begin: anim => setAnimState(anim),
+          complete: () => setAnimState(null)
+        })
+        .add(pupilAwayAnim())
+        .add(eyeLashesAnim())
+        .add(pupilAnimReset());
+    }
   };
 
   React.useEffect(() => {
