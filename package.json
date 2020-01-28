@@ -8,6 +8,10 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "@rooks/use-boundingclientrect": "^3.6.0",
+    "@rooks/use-boundingclientrect-ref": "^3.6.0",
+    "@rooks/use-mouse": "^3.6.0",
+    "@types/animejs": "^3.1.0",
     "animejs": "^3.1.0",
     "framer": "^1.1.7",
     "react": "^16.12.0",

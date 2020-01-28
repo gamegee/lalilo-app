@@ -825,6 +825,26 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@rooks/use-boundingclientrect-ref@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-boundingclientrect-ref/-/use-boundingclientrect-ref-3.6.0.tgz#3a1a5b18751045f7be1ea5b23aff99676c549948"
+  integrity sha512-3IhXIYaWOwp/L1QqFkXKzYUdGZ3I2nzyrzp6baT1CWM/kRCsDwC2rhOMxfYigcorrBnria0bTuJ7qYmYfHDEuA==
+
+"@rooks/use-boundingclientrect@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-boundingclientrect/-/use-boundingclientrect-3.6.0.tgz#d19c4f7041a3d593986d1b8ba63f8c1cacdbea5e"
+  integrity sha512-jauAvlQ0rgU6ivPrxr2lWLUmJcwXgmbES/PSfQR3Cl9FmbpquDI2ne7fT0o8BKgrFZFhA68jurl1opbDCsGFBg==
+
+"@rooks/use-mouse@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-mouse/-/use-mouse-3.6.0.tgz#069abdd924d37928a87e1c167c06a876c81405d3"
+  integrity sha512-wG1MnyYCu2aS/x8IPZdGr8RfMveDGh2BWB/1YZXEW/pwfpuZW27VfBiqtjkyZnLyr/IRAHe8tHgCDHg3aA298Q==
+
+"@types/animejs@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/animejs/-/animejs-3.1.0.tgz#9fa31e5fcf3a0304aa097a2a357e03630d820ab1"
+  integrity sha512-OOOQ11ylW8GeFY85yM3HrprR5wZl1R1KsxrxNLMpE9l24zs+4yXAu4WsDESWcCAf5+PxvPNsLV9W/PB3J+XGMQ==
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"

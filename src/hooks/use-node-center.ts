@@ -1,20 +1,19 @@
-import useNodeRect from "./use-node-rect";
+import useBoundingClientRect from "@rooks/use-boundingclientrect";
 
 interface Center {
   x: number;
   y: number;
 }
 
-const useNodeCenter = (): [Center, React.RefObject<HTMLElement>] => {
-  const [rect, ref] = useNodeRect();
+const useNodeCenter = (ref: React.RefObject<HTMLElement>): Center => {
+  const rect = useBoundingClientRect(ref);
 
-  return [
-    {
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
-    },
-    ref
-  ];
+  return rect
+    ? {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+      }
+    : { x: 0, y: 0 };
 };
 
 export default useNodeCenter;

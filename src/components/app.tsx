@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useMouse, useHover } from "react-use";
-import { useSpring, animated } from "react-spring";
-import anime from "animejs";
+
+import useMouse from "@rooks/use-mouse";
+import anime, { AnimeParams, AnimeInstance } from "animejs";
 
 import clicFile from "../assets/clic.mp3";
 import useNodeCenter from "../hooks/use-node-center";
@@ -11,32 +11,75 @@ import EyeIcon from "./icons/eye-icon";
 
 const App = (): JSX.Element => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = React.useState(0);
-  const [isAnimated, setIsAnimated] = React.useState(false);
-  const [center, ref] = useNodeCenter();
-  const { docX, docY } = useMouse(containerRef);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
+  const eyeLashRef = React.useRef<SVGGElement>(null);
+  const center = useNodeCenter(ref);
+  const { pageX, pageY } = useMouse();
+  const [animState, setAnimState] = React.useState<AnimeInstance | null>(null);
+
+  const pupilAwayAnim = (): AnimeParams => {
+    return wrapperRef.current
+      ? {
+          targets: wrapperRef.current,
+          rotateZ: 180,
+          duration: 1500
+        }
+      : {};
+  };
+
+  const eyeLashesAnim = (): AnimeParams => {
+    return {
+      targets: eyeLashRef.current,
+      duration: 400,
+      endDelay: 400,
+      keyframes: [{ translateX: 4 }, { translateX: 0 }]
+    };
+  };
+
+  const pupilAnimReset = (): AnimeParams => ({
+    targets: wrapperRef.current,
+    rotateZ: 0,
+    duration: 300
+  });
+
+  const playAudio = (): void => {
+    const audio = new Audio(clicFile);
+    audio.play();
+  };
+
+  const pupilAnim = (): void => {
+    playAudio();
+    anime
+      .timeline({
+        easing: "easeOutCirc",
+        begin: anim => setAnimState(anim),
+        complete: () => setAnimState(null)
+      })
+      .add(pupilAwayAnim())
+      .add(eyeLashesAnim())
+      .add(pupilAnimReset());
+  };
 
   React.useEffect(() => {
-    if (!isAnimated) {
-      setRotation(getDegreeAngle(center, { x: docX, y: docY }));
+    if (!animState) {
+      anime({
+        targets: ref.current,
+        duration: 0,
+        rotateZ: getDegreeAngle(center, {
+          x: pageX || 0,
+          y: pageY || 0
+        })
+      });
     }
-  }, [docX, docY, isAnimated]);
-
-  const onMouseOver = (): void => {
-    if (!isAnimated) {
-      new Audio(clicFile).play();
-      setIsAnimated(true);
-      // Animate the pupil away from the cursor
-      setRotation(rotation + 180);
-    }
-  };
+  }, [pageX, pageY]);
 
   return (
     <div ref={containerRef} className="eye-container">
-      <EyeIcon />
-      <div className="eye-container__inner-area">
-        <div ref={ref}>
-          <PupilIcon onMouseEnter={onMouseOver} />
+      <EyeIcon eyeLashRef={eyeLashRef} />
+      <div ref={wrapperRef} className="inner-area-wrapper">
+        <div ref={ref} className="inner-area">
+          <PupilIcon onMouseEnter={pupilAnim} />
         </div>
       </div>
     </div>

@@ -25,15 +25,29 @@ body {
   position: relative;
 }
 
-.eye-container__outer-area {
-  opacity: 1;
-}
-
-.eye-container__inner-area {
-  top: 40%;
-  width: 30%;
-  height: 35%;
+.inner-area-wrapper {
   position: absolute;
   display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  top: 40%;
+  width: 30%;
+  height: 30%;
+}
+
+.inner-area {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pupil-icon {
+  cursor: pointer;
+}
+
+.pupil-icon:hover {
+  opacity: 0.5;
 }
