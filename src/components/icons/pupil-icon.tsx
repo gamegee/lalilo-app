@@ -5,7 +5,7 @@ type PupilIconProps = {
   y?: number | string;
   width?: number | string;
   height?: number | string;
-  onMouseEnter: Function;
+  onMouseEnter: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 };
 
 const PupilIcon = ({

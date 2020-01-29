@@ -45,7 +45,7 @@ const App = (): JSX.Element => {
 
   const playAudio = (): void => {
     const audio = new Audio(clicFile);
-    audio.oncanplaythrough = () => {
+    audio.oncanplaythrough = (): void => {
       audio.play();
     };
   };
